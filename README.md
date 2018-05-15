@@ -1,2 +1,2 @@
 # DemoParseApp
-DemoParseApp for a a react redux workshop
+DemoParseApp for a react redux workshop
