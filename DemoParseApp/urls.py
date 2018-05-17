@@ -15,15 +15,14 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from articles.views import ArticleDetail, ArticleList, ArticlePost, index
+from articles.views import ArticleDetail, ArticleList, ArticlePost, index, CrawlArticle
 
 urlpatterns = [
 
     url(r'^admin/', admin.site.urls),
+    url(r'^article/crawl/$', CrawlArticle.as_view(), name='Article_List'),
     url(r'^article/post/$', ArticlePost.as_view(), name='ArticlePost'),
     url(r'^article/(?P<slug>[\w-]+)/$', ArticleDetail.as_view(), name='Article_Detail'),
-    url(r'^article/$', ArticleList.as_view(), name='Article_List'),
-
     url(r'^', index, name='index'),
 
 ]

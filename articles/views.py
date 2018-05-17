@@ -1,11 +1,13 @@
 from .models import Article
-from .serializers import ArticleSerializer, ArticlePostSerializer, ArticleListSerializer
+from .serializers import ArticleSerializer, ArticlePostSerializer, ArticleListSerializer, CrawledArticleSerializer
 from django.http import Http404
 from rest_framework.views import APIView
 from rest_framework.generics import ListAPIView
 from rest_framework.response import Response
 from rest_framework import status
 from django.shortcuts import render
+
+from .dataUtils import crawl_wiki
 
 def index(request):
     return render(request, 'index.html', {})
@@ -54,3 +56,19 @@ class ArticlePost(APIView):
             new_serializer = ArticleSerializer(new_res, many=False)
             return Response(new_serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+# Crawler
+class CrawledArticle(object):
+    def __init__(self, title, text):
+        self.title = title
+        self.text = text
+
+class CrawlArticle(APIView):
+    def put(self, request, format=None, **kwargs):
+        url = request.data['url']
+        print(url)
+        crawlRes = crawl_wiki(url)
+        raw_data = CrawledArticle(crawlRes['title'], crawlRes['text'])
+        serializer = CrawledArticleSerializer(raw_data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
