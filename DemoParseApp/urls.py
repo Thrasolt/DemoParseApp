@@ -20,7 +20,8 @@ from articles.views import ArticleDetail, ArticleList, ArticlePost, index, Crawl
 urlpatterns = [
 
     url(r'^admin/', admin.site.urls),
-    url(r'^article/crawl/$', CrawlArticle.as_view(), name='Article_List'),
+    url(r'^article/$', ArticleList.as_view(), name='Article_List'),
+    url(r'^article/crawl/$', CrawlArticle.as_view(), name='Article_Crawl'),
     url(r'^article/post/$', ArticlePost.as_view(), name='ArticlePost'),
     url(r'^article/(?P<slug>[\w-]+)/$', ArticleDetail.as_view(), name='Article_Detail'),
     url(r'^', index, name='index'),
