@@ -14,9 +14,9 @@ export default class ArticleList extends React.Component {
   }
 
   renderArticles(){
-    this.props.articleList.map((article)=>{
+    return this.props.articleList.map((article)=>{
       return (
-        <div>
+        <div key={article.id}>
           {article.title}
         </div>
       )

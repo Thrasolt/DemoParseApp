@@ -1,6 +1,6 @@
 import React from 'react';
-import ArticleList from './ArticleList.jsx'
-import ArticleList from './ArticleList.jsx'
+import InputField from './InputField.jsx';
+import ArticleList from './ArticleList.jsx';
 
 export default class App extends React.Component {
 
@@ -14,8 +14,9 @@ export default class App extends React.Component {
 
     return (
       <div>
-        <InputField />
         <ArticleList />
+        <br></br>
+        <InputField />
       </div>
     );
   }
