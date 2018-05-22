@@ -9,6 +9,7 @@ class Article(models.Model):
     text = models.TextField()
     slug = models.SlugField(max_length=50,  null=True, blank=True)
     timestamp = models.DateTimeField(auto_now=True, auto_now_add=False)
+    link = models.URLField(null=True, blank=True)
 
 
     def __str__(self):

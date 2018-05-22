@@ -56,6 +56,7 @@ export default class InputField extends React.Component {
     const data = {
       text: this.state.tempArticle.text,
       title: this.state.tempArticle.title,
+      link: this.state.link,
     }
 
 

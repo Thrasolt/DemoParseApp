@@ -11,12 +11,12 @@ class ArticleSerializer(ModelSerializer):
 class ArticlePostSerializer(ModelSerializer):
     class Meta:
         model = Article
-        fields = ('title', 'text')
+        fields = ('title', 'text', 'link')
 
 class ArticleListSerializer(ModelSerializer):
     class Meta:
         model = Article
-        fields = ('id', 'title', 'slug', 'timestamp')
+        fields = ('id', 'title', 'slug', 'timestamp', 'link')
 
 
 class CrawledArticleSerializer(Serializer):
